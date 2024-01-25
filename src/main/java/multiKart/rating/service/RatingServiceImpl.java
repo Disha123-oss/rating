@@ -45,7 +45,7 @@ public class RatingServiceImpl implements RatingDataService{
             try {
                 String variantId = rating.getVariantId();
                 String productId = rating.getProductId();
-                String productApiUrl = "http://localhost:8085/multikart/v1/product/byvariantid";
+                String productApiUrl = "https://product.prod.psi.initz.run/multikart/v1/product/byvariantid";
 
                 UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(productApiUrl)
                         .queryParam("productId", productId)
@@ -66,7 +66,7 @@ public class RatingServiceImpl implements RatingDataService{
                     double avgRating = averageRating(productId,variantId);
                     product.setAvgRating(String.valueOf(avgRating));
 
-                    String productUpdateUrl = "http://localhost:8085/multikart/v1/product/updateAvgRating";
+                    String productUpdateUrl = "https://product.prod.psi.initz.run/multikart/v1/product/updateAvgRating";
                     restTemplate.put(productUpdateUrl, product);
 
                 } else {
